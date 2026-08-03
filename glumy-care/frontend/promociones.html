@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promociones | GLUmy Care</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <div id="loader"><div class="spinner-glowy"></div></div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">GLUmy<span>Care</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="productos.html">Productos</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="promociones.html">Promociones</a></li>
+                    <li class="nav-item"><a class="nav-link" href="nosotros.html">Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <button class="btn btn-link nav-link me-3" id="themeToggle"><i class="bi bi-moon"></i></button>
+                    <a href="carrito.html" class="btn btn-outline-glowy position-relative me-3">
+                        <i class="bi bi-cart"></i>
+                        <span id="cart-badge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Promociones Header -->
+    <section class="py-5 mt-5">
+        <div class="container py-5 text-center">
+            <h1 class="fw-bold mb-3" data-aos="fade-down">Ofertas Exclusivas</h1>
+            <p class="text-muted" data-aos="fade-up">Aprovecha nuestros combos y descuentos por tiempo limitado.</p>
+        </div>
+    </section>
+
+    <!-- Cards Promocionales -->
+    <section class="pb-5">
+        <div class="container">
+            <div class="row g-4">
+                <!-- Promo 2x1 -->
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="glass-card p-5 h-100 d-flex flex-column justify-content-center position-relative overflow-hidden">
+                        <div class="position-absolute top-0 end-0 bg-danger text-white px-4 py-1 rounded-bottom-start fw-bold">¡Hot Sale!</div>
+                        <h2 class="fw-bold text-accent">2x1 en Clear Skin Gummies</h2>
+                        <p class="text-muted">Lleva el tratamiento de dos meses por el precio de uno. Ideal para notar resultados profundos.</p>
+                        <h3 class="mb-4"><del class="text-muted fs-5">$59.98</del> $29.99</h3>
+                        <button class="btn btn-glowy w-50" onclick="agregarAlCarrito(1); agregarAlCarrito(1);">Agregar Combo</button>
+                    </div>
+                </div>
+                <!-- Envío Gratis -->
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="glass-card p-5 h-100 d-flex flex-column justify-content-center">
+                        <i class="bi bi-truck fs-1 text-accent mb-3"></i>
+                        <h2 class="fw-bold">Envío Gratis</h2>
+                        <p class="text-muted">En compras superiores a $50. No necesitas cupón, el descuento se aplica automáticamente en el carrito.</p>
+                        <a href="productos.html" class="btn btn-outline-glowy w-50 mt-auto">Comprar Ahora</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/app.js"></script>
+    <script src="js/productos.js"></script>
+    <script src="js/carrito.js"></script>
+</body>
+</html>

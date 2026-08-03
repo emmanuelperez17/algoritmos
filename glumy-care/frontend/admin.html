@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración | GLUmy Care</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Estilos específicos para el Dashboard */
+        body { background: var(--bg-light); color: var(--text-dark); }
+        .admin-header { background: var(--glass-bg); backdrop-filter: blur(10px); border-bottom: 1px solid var(--glass-border); }
+        .nav-pills .nav-link.active { background-color: var(--primary); color: white; }
+        .nav-pills .nav-link { color: var(--text-dark); }
+    </style>
+</head>
+<body>
+
+    <!-- Header del Admin -->
+    <header class="admin-header py-3 sticky-top">
+        <div class="container-fluid d-flex justify-content-between align-items-center px-4">
+            <h4 class="m-0 fw-bold"><i class="bi bi-shield-lock-fill text-accent"></i> GLUmy<span class="text-primary">Admin</span></h4>
+            <div class="d-flex align-items-center">
+                <span class="me-3 fw-medium" id="admin-name">Cargando...</span>
+                <button class="btn btn-outline-danger btn-sm rounded-pill px-3" onclick="logout()"><i class="bi bi-box-arrow-right"></i> Salir</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container-fluid py-4 px-4">
+        <div class="row">
+            <!-- Menú Lateral -->
+            <div class="col-md-2 mb-4">
+                <div class="glass-card p-3 h-100">
+                    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                        <button class="nav-link active text-start mb-2" id="tab-productos" data-bs-toggle="pill" data-bs-target="#panel-productos" type="button"><i class="bi bi-box-seam me-2"></i> Productos</button>
+                        <button class="nav-link text-start mb-2" id="tab-usuarios" data-bs-toggle="pill" data-bs-target="#panel-usuarios" type="button"><i class="bi bi-people me-2"></i> Usuarios</button>
+                        <button class="nav-link text-start mb-2" id="tab-pedidos" data-bs-toggle="pill" data-bs-target="#panel-pedidos" type="button"><i class="bi bi-cart-check me-2"></i> Pedidos</button>
+                        <a href="index.html" class="nav-link text-start text-accent mt-4"><i class="bi bi-house me-2"></i> Ver Tienda</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Área de Contenido -->
+            <div class="col-md-10">
+                <div class="tab-content" id="v-pills-tabContent">
+                    
+                    <!-- Panel de Productos -->
+                    <div class="tab-pane fade show active" id="panel-productos" role="tabpanel">
+                        <div class="glass-card p-4">
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                <h3 class="fw-bold m-0">Gestión de Productos</h3>
+                                <button class="btn btn-glowy rounded-pill px-4" onclick="abrirModalProducto()"><i class="bi bi-plus-lg"></i> Nuevo Producto</button>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-hover align-middle carrito-table">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Imagen</th>
+                                            <th>Nombre</th>
+                                            <th>Precio</th>
+                                            <th>Stock</th>
+                                            <th>Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tabla-admin-productos">
+                                        <tr><td colspan="6" class="text-center py-4">Cargando productos...</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Panel de Usuarios (En construcción) -->
+                    <div class="tab-pane fade" id="panel-usuarios" role="tabpanel">
+                        <div class="glass-card p-4 text-center py-5">
+                            <i class="bi bi-tools fs-1 text-muted mb-3 d-block"></i>
+                            <h4>Módulo de Usuarios en Construcción</h4>
+                            <p class="text-muted">Próximamente podrás gestionar a tus clientes desde aquí.</p>
+                        </div>
+                    </div>
+
+                    <!-- Panel de Pedidos (En construcción) -->
+                    <div class="tab-pane fade" id="panel-pedidos" role="tabpanel">
+                        <div class="glass-card p-4 text-center py-5">
+                            <i class="bi bi-tools fs-1 text-muted mb-3 d-block"></i>
+                            <h4>Módulo de Pedidos en Construcción</h4>
+                            <p class="text-muted">Próximamente verás las compras de tus clientes aquí.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para Crear/Editar Producto -->
+    <div class="modal fade" id="modalProducto" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content glass-card border-0">
+                <div class="modal-header border-bottom-0 pb-0">
+                    <h5 class="modal-title fw-bold" id="modalProductoTitle">Nuevo Producto</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <form id="form-producto" onsubmit="guardarProducto(event)">
+                        <input type="hidden" id="prod-id"> <!-- Oculto, sirve para saber si editamos o creamos -->
+                        <div class="mb-3">
+                            <label class="small text-muted mb-1">Nombre del Producto</label>
+                            <input type="text" id="prod-nombre" class="form-control glass" required>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="small text-muted mb-1">Precio ($)</label>
+                                <input type="number" step="0.01" id="prod-precio" class="form-control glass" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="small text-muted mb-1">Stock</label>
+                                <input type="number" id="prod-stock" class="form-control glass" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="small text-muted mb-1">URL de la Imagen</label>
+                            <input type="text" id="prod-imagen" class="form-control glass" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="small text-muted mb-1">Etiqueta (Ej. Acné Activo)</label>
+                            <input type="text" id="prod-etiqueta" class="form-control glass">
+                        </div>
+                        <div class="mb-4">
+                            <label class="small text-muted mb-1">Descripción</label>
+                            <textarea id="prod-descripcion" class="form-control glass" rows="2"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-glowy w-100 rounded-pill">Guardar Producto</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>

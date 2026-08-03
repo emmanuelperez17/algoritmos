@@ -1,0 +1,17 @@
+/* Dispositivos Pequeños (Móviles) */
+@media (max-width: 768px) {
+    .hero-section { text-align: center; padding-top: 120px; }
+    .hero-img { margin-top: 30px; max-width: 80%; }
+    .display-4 { font-size: 2.5rem; }
+    .glass-card { margin-bottom: 20px; }
+}
+
+/* Tablets */
+@media (max-width: 1024px) {
+    .navbar-collapse {
+        background: var(--glass-bg);
+        padding: 20px;
+        border-radius: 15px;
+        margin-top: 10px;
+    }
+}

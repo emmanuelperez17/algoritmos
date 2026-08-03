@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto | GLUmy Care</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <div id="loader"><div class="spinner-glowy"></div></div>
+
+    <!-- Header / Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">GLUmy<span>Care</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="productos.html">Productos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="promociones.html">Promociones</a></li>
+                    <li class="nav-item"><a class="nav-link" href="nosotros.html">Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <button class="btn btn-link nav-link me-3" id="themeToggle"><i class="bi bi-moon"></i></button>
+                    <a href="carrito.html" class="btn btn-outline-glowy position-relative me-3">
+                        <i class="bi bi-cart"></i>
+                        <span id="cart-badge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+                    </a>
+                    <a href="productos.html" class="btn btn-glowy">Comprar Ahora</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="py-5 mt-5">
+        <div class="container py-5">
+            <h1 class="fw-bold text-center mb-5" data-aos="fade-up">Ponte en Contacto</h1>
+
+            <div class="row g-5">
+                <!-- Información y Mapa -->
+                <div class="col-lg-5" data-aos="fade-right">
+                    <div class="glass-card p-4 mb-4">
+                        <h4 class="fw-bold mb-4">Información Corporativa</h4>
+                        <ul class="list-unstyled">
+                            <li class="mb-3"><i class="bi bi-geo-alt text-accent me-2"></i> calle 9, # 8-24, la union Antioquia</li>
+                            <li class="mb-3"><i class="bi bi-envelope text-accent me-2"></i> glumy11@hotmail.com</li>
+                            <li class="mb-3"><i class="bi bi-telephone text-accent me-2"></i> 311 75953116</li>
+                        </ul>
+                    </div>
+                    <!-- Mapa Simulado (Google Maps Iframe iría aquí) -->
+                    <div class="glass-card overflow-hidden">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15908.136009849297!2d-74.076!3d4.652!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNMKwMzknMDcuMiJOIDc0wrAwNCczMy42Ilc!5e0!3m2!1ses!2sco!4v1634567890123!5m2!1ses!2sco" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+
+                <!-- Formulario -->
+                <div class="col-lg-7" data-aos="fade-left">
+                    <div class="glass-card p-5">
+                        <h4 class="fw-bold mb-4">Envíanos un mensaje</h4>
+                        <form id="formContacto">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <input type="text" id="nombre" class="form-control glass" placeholder="Nombre" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" id="apellido" class="form-control glass" placeholder="Apellido">
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="email" id="email" class="form-control glass" placeholder="Correo Electrónico" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="tel" id="telefono" class="form-control glass" placeholder="Teléfono">
+                                </div>
+                                <div class="col-12">
+                                    <textarea id="mensaje" class="form-control glass" rows="4" placeholder="Tu Mensaje" required></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-glowy w-100">Enviar Mensaje</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Preguntas Frecuentes (Acordeón) -->
+            <div class="row mt-5 pt-5" data-aos="fade-up">
+                <div class="col-lg-8 mx-auto">
+                    <h3 class="fw-bold text-center mb-4">Preguntas Frecuentes</h3>
+                    <div class="accordion glass-card" id="faqAccordion">
+                        <div class="accordion-item bg-transparent border-0">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button bg-transparent fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                    ¿Cómo debo consumir las gomas?
+                                </button>
+                            </h2>
+                            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body text-muted">
+                                    Recomendamos consumir dos gomas al día, preferiblemente junto con tu primera comida para optimizar la absorción de las vitaminas.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item bg-transparent border-0">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed bg-transparent fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                    ¿En cuánto tiempo veré resultados?
+                                </button>
+                            </h2>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body text-muted">
+                                    Nuestros estudios clínicos demuestran que la mayoría de los usuarios ven mejoras significativas a partir del día 30 de uso continuo.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/app.js"></script>
+    <script src="js/validaciones.js"></script>
+</body>
+</html>

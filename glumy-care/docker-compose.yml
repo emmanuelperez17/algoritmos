@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: glumy_db
+    restart: always
+    environment:
+      POSTGRES_USER: glumy_admin
+      POSTGRES_PASSWORD: glumy_password_123
+      POSTGRES_DB: glumy_care
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  backend:
+    build: ./backend
+    container_name: glumy_backend
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      - DB_HOST=db
+      - DB_USER=glumy_admin
+      - DB_PASSWORD=glumy_password_123
+      - DB_NAME=glumy_care
+      - PORT=3000
+    volumes:
+      - ./backend:/app
+      - ./frontend:/app/frontend
+      - /app/node_modules
+    depends_on:
+      - db
+
+volumes:
+  pgdata:

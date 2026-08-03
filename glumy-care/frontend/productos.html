@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos | GLUmy Care</title>
+    <meta name="description" content="Gomas premium para el tratamiento del acné. Innovación y Skin Care futurista.">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <!-- AOS Animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <div id="loader"><div class="spinner-glowy"></div></div>
+
+    <!-- Header / Navbar (copiado de index.html) -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">GLUmy<span>Care</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="productos.html">Productos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="promociones.html">Promociones</a></li>
+                    <li class="nav-item"><a class="nav-link" href="nosotros.html">Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <button class="btn btn-link nav-link me-3" id="themeToggle"><i class="bi bi-moon"></i></button>
+                    <a href="carrito.html" class="btn btn-outline-glowy position-relative me-3">
+                        <i class="bi bi-cart"></i>
+                        <span id="cart-badge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+                    </a>
+                    <a href="productos.html" class="btn btn-glowy">Comprar Ahora</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Productos -->
+    <section class="py-5 mt-5">
+        <div class="container py-5">
+            <h2 class="text-center fw-bold mb-4" data-aos="fade-up">Nuestra Colección</h2>
+            
+            <!-- Buscador y Filtros -->
+            <div class="row mb-5 justify-content-center" data-aos="fade-up">
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <span class="input-group-text glass"><i class="bi bi-search"></i></span>
+                        <input type="text" id="buscador" class="form-control glass" placeholder="Buscar productos...">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contenedor inyectado por JS -->
+            <div class="row" id="productos-container">
+                <!-- Se llena con productos.js -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (copiado de index.html) -->
+    <footer class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5 class="fw-bold">GLUmy<span style="color:var(--accent)">Care</span></h5>
+                    <p class="text-muted">Innovación y bienestar para una piel sin imperfecciones.</p>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="text-muted fs-4"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="text-muted fs-4"><i class="bi bi-tiktok"></i></a>
+                        <a href="#" class="text-muted fs-4"><i class="bi bi-facebook"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5 class="fw-bold">Enlaces Rápidos</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="productos.html" class="text-muted text-decoration-none">Tienda</a></li>
+                        <li><a href="faq.html" class="text-muted text-decoration-none">Preguntas Frecuentes</a></li>
+                        <li><a href="contacto.html" class="text-muted text-decoration-none">Soporte</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5 class="fw-bold">Newsletter</h5>
+                    <p class="text-muted">Únete para recibir ofertas exclusivas y tips de Skin Care.</p>
+                    <div class="input-group">
+                        <input type="email" class="form-control glass" placeholder="Tu correo">
+                        <button class="btn btn-glowy" type="button">Suscribir</button>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center text-muted mt-4 border-top pt-3">
+                <small>&copy; 2026 GLUmy Care. Todos los derechos reservados.</small>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/app.js"></script>
+    <script src="js/productos.js"></script>
+    <script src="js/carrito.js"></script>
+</body>
+</html>

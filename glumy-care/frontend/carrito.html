@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu Carrito | GLUmy Care</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <!-- Animaciones AOS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Estilos Propios -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <!-- Loader -->
+    <div id="loader"><div class="spinner-glowy"></div></div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">GLUmy<span>Care</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="productos.html">Productos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="promociones.html">Promociones</a></li>
+                    <li class="nav-item"><a class="nav-link" href="nosotros.html">Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <button class="btn btn-link nav-link me-3" id="themeToggle"><i class="bi bi-moon"></i></button>
+                    <a href="carrito.html" class="btn btn-glowy position-relative me-3 active">
+                        <i class="bi bi-bag-fill"></i> Mi Carrito
+                        <span id="cart-badge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sección Principal del Carrito -->
+    <section class="py-5 mt-5 min-vh-100 d-flex flex-column justify-content-center">
+        <div class="container py-5">
+            <div class="d-flex justify-content-between align-items-center mb-4" data-aos="fade-down">
+                <h2 class="fw-bold m-0">Bolsa de Compras <i class="bi bi-bag-check text-accent"></i></h2>
+                <button class="btn btn-outline-danger btn-sm rounded-pill px-3" onclick="vaciarCarrito()">
+                    <i class="bi bi-trash3"></i> Vaciar
+                </button>
+            </div>
+            
+            <div class="row g-4">
+                <!-- Tabla de Productos -->
+                <div class="col-lg-8" data-aos="fade-right">
+                    <div class="glass-card p-0 overflow-hidden h-100">
+                        <div class="table-responsive">
+                            <table class="table table-hover table-borderless text-center align-middle mb-0 carrito-table">
+                                <thead class="border-bottom">
+                                    <tr>
+                                        <th scope="col" class="py-3">Producto</th>
+                                        <th scope="col" class="py-3">Detalle</th>
+                                        <th scope="col" class="py-3">Cantidad</th>
+                                        <th scope="col" class="py-3">Subtotal</th>
+                                        <th scope="col" class="py-3"></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tabla-carrito">
+                                    <!-- Inyectado dinámicamente por carrito.js -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Panel de Resumen -->
+                <div class="col-lg-4" data-aos="fade-left">
+                    <div class="glass-card p-4 h-100 d-flex flex-column">
+                        <h4 class="fw-bold border-bottom pb-3 mb-4">Resumen del Pedido</h4>
+                        
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="text-muted">Subtotal:</span> 
+                            <span class="fw-medium" id="resumen-subtotal">$0.00</span>
+                        </div>
+                        
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="text-muted">Envío:</span> 
+                            <span class="text-end" id="resumen-envio">
+                                <!-- JS inyectará el costo o el badge de Gratis aquí -->
+                            </span>
+                        </div>
+                        
+                        <div class="d-flex justify-content-between align-items-center mb-4 border-bottom pb-4">
+                            <span class="text-muted">Impuestos (19%):</span> 
+                            <span class="fw-medium" id="resumen-iva">$0.00</span>
+                        </div>
+                        
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <span class="fw-bold fs-4">Total:</span> 
+                            <span class="fw-bold fs-3 text-accent" id="resumen-total">$0.00</span>
+                        </div>
+                        
+                        <button class="btn btn-glowy w-100 btn-lg mt-auto py-3 rounded-pill fw-bold" onclick="simularCompra()">
+                            <i class="bi bi-credit-card me-2"></i> Pagar de forma segura
+                        </button>
+
+                        <div class="text-center mt-3 text-muted small">
+                            <i class="bi bi-shield-lock me-1"></i> Transacción cifrada y segura.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    <!-- Base de datos de productos (Necesaria para buscar la info) -->
+    <script src="js/productos.js"></script> 
+    <!-- Lógica general y Carrito -->
+    <script src="js/app.js"></script>
+    <script src="js/carrito.js"></script>
+
+    <!-- Modal de Checkout / Pago -->
+    <div class="modal fade" id="modalPago" tabindex="-1" aria-labelledby="modalPagoLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content glass-card border-0 position-relative overflow-hidden">
+                <!-- Decoración de fondo del modal -->
+                <div class="position-absolute top-0 start-0 w-100 h-100" style="background: radial-gradient(circle at top right, rgba(233, 30, 99, 0.1), transparent); z-index: -1;"></div>
+                
+                <div class="modal-header border-bottom-0 pb-0">
+                    <h4 class="modal-title fw-bold" id="modalPagoLabel"><i class="bi bi-shield-lock-fill text-accent"></i> Checkout Seguro</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                
+                <div class="modal-body p-4 pt-3">
+                    <form id="formCheckout" onsubmit="procesarPagoFinal(event)">
+                        
+                        <!-- Sección 1: Datos de Envío -->
+                        <h6 class="text-accent fw-bold mb-3">1. Dirección de Envío</h6>
+                        <div class="row g-3 mb-4">
+                            <div class="col-md-6">
+                                <input id="checkoutNombre" type="text" class="form-control glass" placeholder="Nombre completo" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input id="checkoutEmail" type="email" class="form-control glass" placeholder="Correo electrónico" required>
+                            </div>
+                            <div class="col-12">
+                                <input id="checkoutDireccion" type="text" class="form-control glass" placeholder="Dirección (Ej. Calle Falsa 123)" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input id="checkoutCiudad" type="text" class="form-control glass" placeholder="Ciudad" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input id="checkoutPostal" type="text" class="form-control glass" placeholder="Código Postal" required>
+                            </div>
+                        </div>
+
+                        <!-- Sección 2: Método de Pago -->
+                        <h6 class="text-accent fw-bold mb-3">2. Tarjeta de Crédito / Débito</h6>
+                        <div class="p-3 border rounded glass" style="border-color: var(--glass-border) !important;">
+                            <div class="d-flex justify-content-between mb-3">
+                                <span class="fw-medium text-muted small">Tarjetas aceptadas:</span>
+                                <div class="fs-5 text-muted">
+                                    <i class="bi bi-credit-card-fill mx-1"></i>
+                                    <i class="bi bi-paypal mx-1"></i>
+                                    <i class="bi bi-apple mx-1"></i>
+                                </div>
+                            </div>
+                            <div class="row g-3">
+                                <div class="col-12">
+                                    <label class="small text-muted mb-1">Número de Tarjeta</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text glass border-end-0"><i class="bi bi-credit-card"></i></span>
+                                        <input type="text" class="form-control glass border-start-0 ps-0" placeholder="0000 0000 0000 0000" maxlength="19" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="small text-muted mb-1">Fecha de Expiración</label>
+                                    <input type="text" class="form-control glass" placeholder="MM/YY" maxlength="5" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="small text-muted mb-1">CVV</label>
+                                    <div class="input-group">
+                                        <input type="password" class="form-control glass border-end-0" placeholder="123" maxlength="3" required>
+                                        <span class="input-group-text glass border-start-0" title="Código de 3 dígitos al reverso"><i class="bi bi-info-circle"></i></span>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <label class="small text-muted mb-1">Nombre en la tarjeta</label>
+                                    <input type="text" class="form-control glass" placeholder="Como aparece en la tarjeta" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 pt-3 border-top d-flex justify-content-between align-items-center">
+                            <span class="text-muted small">Total a cargar: <strong class="text-accent fs-5" id="modal-total-pago">$0.00</strong></span>
+                            <button type="submit" class="btn btn-glowy px-4">Confirmar y Pagar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
